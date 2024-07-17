@@ -1,0 +1,40 @@
+{
+  "name": "vscode-pinia-snippets",
+  "displayName": "Pinia VSCode Snippets",
+  "description": "Pinia snippets for VSCode",
+  "version": "0.0.1",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "keywords": [
+    "Pinia",
+    "Pinia snippets",
+    "Vue",
+    "Vue 3",
+    "Snippets",
+    "Vue snippets",
+    "Vue 3 snippets"
+  ],
+  "categories": [
+    "Snippets"
+  ],
+  "author": {
+    "name": "Alex Peshkov",
+    "email": "1alexpeshkov@gmail.com",
+    "url": "https://github.com/mnenie"
+  },
+  "publisher": "mnenie",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mnenie/vscode-vue-snippets"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "vue",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}
