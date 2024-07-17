@@ -1,11 +1,18 @@
 {
+  "publisher": "mnenie",
   "name": "vscode-pinia-snippets",
   "displayName": "Pinia VSCode Snippets",
-  "description": "Pinia snippets for VSCode",
   "version": "0.0.1",
+  "description": "Pinia snippets for VSCode",
+  "author": {
+    "name": "Alex Peshkov",
+    "email": "1alexpeshkov@gmail.com",
+    "url": "https://github.com/mnenie"
+  },
   "license": "MIT",
-  "engines": {
-    "vscode": "^1.91.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mnenie/vscode-vue-snippets"
   },
   "keywords": [
     "Pinia",
@@ -19,15 +26,8 @@
   "categories": [
     "Snippets"
   ],
-  "author": {
-    "name": "Alex Peshkov",
-    "email": "1alexpeshkov@gmail.com",
-    "url": "https://github.com/mnenie"
-  },
-  "publisher": "mnenie",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mnenie/vscode-vue-snippets"
+  "engines": {
+    "vscode": "^1.91.0"
   },
   "contributes": {
     "snippets": [
@@ -36,5 +36,13 @@
         "path": "./snippets/snippets.code-snippets"
       }
     ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.22.4",
+    "eslint": "^9.7.0"
   }
 }
