@@ -1,0 +1,36 @@
+name: Publish VS Code Extension
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install vsce
+        run: pnpm install -D @vscode/vsce@latest
+
+      - name: Publish Extension
+        env:
+          VSCE_TOKEN: ${{ secrets.VSCE_TOKEN}}
+        run: pnpm exec vsce publish
