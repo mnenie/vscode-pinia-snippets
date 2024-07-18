@@ -1,0 +1,123 @@
+{
+	"Pinia Store Base with the Composition API": {
+		"prefix": ["pinia-dsc", "dsc"],
+		"body": [
+			"import { defineStore } from 'pinia';",
+			"",
+			"export const use${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}Store = defineStore('${2:${TM_FILENAME_BASE/(\\w+)/${1:/downcase}/}}', () => {",
+			"\t$3",
+			"\treturn {",
+			"\t\t$4",
+			"\t}",
+			"});"
+		],
+		"description": "Creates a Pinia store boilerplate using the Composition API."
+	},
+	"Pinia Store Base with the Options API": {
+		"prefix": ["pinia-dso", "dso"],
+		"body": [
+			"import { defineStore } from 'pinia';",
+			"",
+		 "export const use${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}Store = defineStore('${2:${TM_FILENAME_BASE/(\\w+)/${1:/downcase}/}}', {",
+			"\tstate: () => ({",
+			"\t\t${3}",
+			"\t}),",
+			"\tgetters: {",
+			"\t\t${4}",
+			"\t},",
+			"\tactions: {",
+			"\t\t${5}",
+			"\t},",
+			"});"
+		],
+		"description": "Creates a Pinia store boilerplate using the Options API."
+	},
+	"Import Pinia Store": {
+		"prefix": ["import-store", "imps"],
+		"body": [
+			"import { use${1:Name}Store } from '@/stores/${3:file}';",
+			"",
+			"const ${2:nameStore} = use${1:Name}Store();"
+		],
+		"description": "Import a Pinia Store"
+	},
+	"Import Pinia storeToRefs()": {
+		"prefix": ["import-store-to-refs", "imstr"],
+		"body": [
+			"import { storeToRefs } from 'pinia';",
+			"\t$1",
+			"const { state } = storeToRefs(store);"
+		],
+		"description": "Import Pinia storeToRefs"
+	},
+	"Pinia Composition API - Using script setup": {
+		"prefix": ["pinia-script-setup", "pss"],
+		"body": [
+			"const ${1:name}Store = use${1/(.*)/${1:/pascalcase}/}Store();"
+		],
+		"description": "Create and initialize a Pinia store using the Composition API with the `script setup`."
+	},
+	"Pinia Store - Using setup()": {
+		"prefix": ["pinia-setup", "ps"],
+		"body": [
+			"setup() {",
+			"\tconst ${1:name}Store = use${1/(.*)/${1:/pascalcase}/}Store()",
+			"",
+			"\treturn { ${1:name}Store }",
+			"},"
+		],
+		"description": "Initialize a Pinia store using the `setup()` function in a Vue component."
+	},
+	"Pinia State Subscription with $subscribe": {
+		"prefix": ["pinia-subscribe", "ps$subscribe"],
+		"body": [
+			"${1:name}Store.\\$subscribe((mutation, state) => {",
+			"\t$2",
+			"});"
+		],
+		"description": "Subscribe to Pinia store changes using `$subscribe`."
+	},
+	"Pinia State Mutation with $patch": {
+		"prefix": ["pinia-patch", "state-patch", "ps$patch"],
+		"body": [
+			"${1:name}Store.\\$patch((state) => {",
+			"\t$2",
+			"});"
+		],
+		"description": "Use `$patch` to mutate the state of a Pinia store."
+	},
+	"Pinia Action Subscription with $onAction": {
+		"prefix": ["pinia-action-sub", "on-action", "ps$onAction"],
+		"body": [
+			"const unsubscribe = ${1:name}Store.\\$onAction(",
+			"\t({ name, store, args, after, onError }) => {",
+			"\t\t$2",
+			"\t\tafter((result) => { });",
+			"\t\tonError((error) => { });",
+			"\t}",
+			");"
+		],
+		"description": "Subscribe to store actions with `$onAction`. Handle action execution, success, and errors."
+	}	,
+	"Pinia mapState() - Usage in Options API": {
+		"prefix": ["map-state", "ms"],
+		"body": [
+			"...mapState(use${1:Name}Store, [''])"
+		],
+		"description": "`mapState()` helper to map state properties as readonly computed properties in the Options API."
+	},
+	"Pinia mapWritableState() - Usage in Options API": {
+		"prefix": ["map-writable-state", "mws"],
+		"body": [
+			"...mapWritableState(use${1:Name}Store, [''])"
+		],
+		"description": "`mapWritableState()` helper to map writable state properties as computed properties in the Options API."
+	},
+	"Pinia mapActions() - Usage in Options API": {
+		"prefix": ["map-actions", "ma"],
+		"body": [
+			"...mapActions(use${1:Name}Store, [''])"
+		],
+		"description": "`mapActions()` helper to map actions properties as methods in your component in the Options API."
+	}
+}

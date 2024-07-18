@@ -26,14 +26,19 @@
   "categories": [
     "Snippets"
   ],
+  "icon": "assets/pinia.png",
   "engines": {
     "vscode": "^1.91.0"
   },
   "contributes": {
     "snippets": [
       {
-        "language": "vue",
-        "path": "./snippets/snippets.code-snippets"
+        "language": "javascript",
+        "path": "./snippets/pinia/pinia.code-snippets"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/pinia/pinia.code-snippets"
       }
     ]
   },
@@ -49,6 +54,6 @@
     "lint-staged": "^15.2.7"
   },
   "lint-staged": {
-    "*.{vue,js,jsx,cjs,mjs,ts,json}": "eslint --fix"
+    "*.{vue,json,js,mjs,ts}": "eslint --fix"
   }
 }
