@@ -9,22 +9,51 @@ permissions:
   contents: write
 
 jobs:
-    release:
-#      if: startsWith(github.ref, 'refs/tags/')
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
-          with:
-            fetch-depth: 0
-        - name: Build Changelog
-          id: github_release
-          uses: mikepenz/release-changelog-builder-action@v4
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            commitMode: true
-        - name: Create Release
-          uses: softprops/action-gh-release@v2
-          with:
-            body: ${{steps.github_release.outputs.changelog}}
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build Changelog
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          commitMode: true
+          configurationJson: |
+            {
+              "template": "# Changelog\n\n{{CHANGELOG}}\n",
+              "categories": [
+                {
+                    "title": "## 🚀 Enhancements",
+                    "labels": ["enhancement", "enhance"]
+                },
+                {
+                    "title": "## 🩹 Fixes",
+                    "labels": ["fix", "bug"]
+                },
+                {
+                    "title": "## 🏡 Chore",
+                    "labels": ["chore"]
+                },
+                {
+                    "title": "## ⚠️ Breaking Changes",
+                    "labels": ["breaking"]
+                }
+              ],
+              "label_extractor": [
+                {
+                  "pattern": "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test|breaking){1}(\\([\\w\\-\\.]+\\))?(!)?: ([\\w ])+([\\s\\S]*)",
+                  "target": "$1"
+                }
+              ]
+            }
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body: ${{ steps.github_release.outputs.changelog }}
