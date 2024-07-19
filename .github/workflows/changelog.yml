@@ -24,38 +24,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           commitMode: true
-          configurationJson: |
-            {
-              "template": "# {{CHANGELOG}}",
-              "categories": [
-                {
-                  "title": "## 🚀 Enhancements",
-                  "labels": ["feat", "feature"]
-                },
-                {
-                  "title": "## 🩹 Fixes",
-                  "labels": ["fix", "bug"]
-                },
-                {
-                  "title": "## 🏡 Chore",
-                  "labels": ["chore"]
-                },
-                {
-                  "title": "## 📚 Documentation",
-                  "labels": ["docs"]
-                },
-                {
-                  "title": "## ⚠️ Breaking Changes",
-                  "labels": ["BREAKING CHANGE"]
-                }
-              ],
-              "label_extractor": [
-                {
-                  "pattern": "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test|BREAKING CHANGE)(\\([\\w\\-\\.]+\\))?(!)?: ([\\w ])+([\\s\\S]*)",
-                  "target": "$1"
-                }
-              ]
-            }
+          configuration: "configuration.json"
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
