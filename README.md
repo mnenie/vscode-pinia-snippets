@@ -3,7 +3,7 @@
 ## Installation
 
 - You can install by finding the `Pinia VS Code Snippets` by `mnenie` extension.
-- Or go [VS Code Extensions Marketplace]() and click install.
+- Or go [VS Code Extensions Marketplace](https://marketplace.visualstudio.com/items?itemName=mnenie.pinia-snippets-vscode) and click install.
 
 ## Snippets
 
