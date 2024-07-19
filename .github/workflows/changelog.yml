@@ -9,24 +9,28 @@ permissions:
   contents: write
 
 jobs:
-  release:
+  build:
+    name: Create Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Build Changelog
-        id: github_release
-        uses: mikepenz/release-changelog-builder-action@v4
+      - name: Changelog
+        uses: Bullrich/generate-release-changelog@master
+        id: Changelog
+        env:
+          REPO: ${{ github.repository }}
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          commitMode: true
-          configuration: configuration.json
-
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          body: ${{ steps.github_release.outputs.changelog }}
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ${{ steps.Changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
