@@ -3,7 +3,7 @@ name: Generate Changelog and Create Release
 on:
   push:
     tags:
-      - "*"
+      - '*'
 
 permissions:
   contents: write
@@ -24,7 +24,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           commitMode: true
-          configuration: "configuration.json"
+          configuration: configuration.json
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
