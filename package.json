@@ -1,6 +1,6 @@
 {
   "publisher": "mnenie",
-  "name": "vscode-pinia-snippets",
+  "name": "pinia-snippets-vscode",
   "displayName": "Pinia VS Code Snippets",
   "version": "0.2.0",
   "description": "Pinia snippets for VS Code",
