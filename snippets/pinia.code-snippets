@@ -78,7 +78,7 @@
 		"description": "Subscribe to Pinia store changes using `$subscribe`."
 	},
 	"Pinia State Mutation with $patch": {
-		"prefix": ["pinia-patch", "state-patch", "ps$patch"],
+		"prefix": ["pinia-patch", "ps$patch"],
 		"body": [
 			"${1:name}Store.\\$patch((state) => {",
 			"\t$2",
