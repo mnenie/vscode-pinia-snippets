@@ -2,7 +2,7 @@
   "publisher": "mnenie",
   "name": "pinia-snippets-vscode",
   "displayName": "Pinia VS Code Snippets",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Pinia snippets for VS Code",
   "author": {
     "name": "Alex Peshkov",
