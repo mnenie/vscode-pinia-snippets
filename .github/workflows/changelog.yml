@@ -1,4 +1,4 @@
-name: 'Generate Changelog and Create Release'
+name: Generate Changelog and Create Release
 
 on:
   push:
@@ -26,28 +26,32 @@ jobs:
           commitMode: true
           configurationJson: |
             {
-              "template": "# Changelog\n\n{{CHANGELOG}}\n",
+              "template": "# {{CHANGELOG}}",
               "categories": [
                 {
-                    "title": "## 🚀 Enhancements",
-                    "labels": ["enhancement", "enhance"]
+                  "title": "## 🚀 Enhancements",
+                  "labels": ["feat", "feature"]
                 },
                 {
-                    "title": "## 🩹 Fixes",
-                    "labels": ["fix", "bug"]
+                  "title": "## 🩹 Fixes",
+                  "labels": ["fix", "bug"]
                 },
                 {
-                    "title": "## 🏡 Chore",
-                    "labels": ["chore"]
+                  "title": "## 🏡 Chore",
+                  "labels": ["chore"]
                 },
                 {
-                    "title": "## ⚠️ Breaking Changes",
-                    "labels": ["breaking"]
+                  "title": "## 📚 Documentation",
+                  "labels": ["docs"]
+                },
+                {
+                  "title": "## ⚠️ Breaking Changes",
+                  "labels": ["BREAKING CHANGE"]
                 }
               ],
               "label_extractor": [
                 {
-                  "pattern": "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test|breaking){1}(\\([\\w\\-\\.]+\\))?(!)?: ([\\w ])+([\\s\\S]*)",
+                  "pattern": "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test|BREAKING CHANGE)(\\([\\w\\-\\.]+\\))?(!)?: ([\\w ])+([\\s\\S]*)",
                   "target": "$1"
                 }
               ]
