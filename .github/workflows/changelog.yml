@@ -52,3 +52,4 @@ jobs:
         uses: mikepenz/action-gh-release@v0.2.0-a03
         with:
           body: ${{ steps.release.outputs.changelog }}
+          token: ${{ secrets.GITHUB_TOKEN }}
