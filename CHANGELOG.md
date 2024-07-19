@@ -1,4 +1,2 @@
-# Change Log
-
-All notable changes to the "pinia-vscode-snippets" extension will be documented in this file.
-
+ - 03fb55c release: v0.5.0
+ - f5e627d fix: changelog for auto update in main branch
